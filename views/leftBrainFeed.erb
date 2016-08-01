@@ -1,0 +1,10 @@
+<div class="container feed-container">
+	<h1>Consulate Blog</h1>
+	<% @post.each do |p| %>
+		<div class="container post"> 
+			<h2><%= p.title.upcase %></h2>
+			<p class="date"><%= p.created_at.strftime("Created: %m/%d/%Y at %l:%M %p : %z UTC") %></p>
+			<p><%= h(p.body).gsub(/\n/, '<br/>') %></p>
+		</div>
+	<% end %>
+</div>

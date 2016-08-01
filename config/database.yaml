@@ -1,0 +1,9 @@
+development:
+  adapter: sqlite3
+  database: consulate.sqlite3
+
+production:
+  adapter: postgresql
+  host: localhost
+  username: user
+  database: app-dev

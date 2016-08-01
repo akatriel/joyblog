@@ -1,0 +1,28 @@
+<div class="container admin-container">
+	<%= flash[:alert] if flash[:alert] %>
+	<h1>Admin Panel</h1>
+	<h2>Post Creation:</h2>
+	<form action='/create' method="POST">
+		<div class="form-group">
+			<label for="title">Post Title:</label>
+			<input class="form-control" type="text" name="title">
+		</div>
+		<div class="form-group">
+			<label for="body">Post Body:</label>
+			<textarea class="form-control" rows="3" name="body"></textarea>
+		</div>
+		<input type="submit" name="submit" class="btn btn-primary">
+	</form>
+</div>
+<div class="container feed-container">
+	<h1>Consulate Blog</h1>
+	<% @post.each do |p| %>
+		<div class="container post"> 
+			<h2><%= p.title.upcase %></h2>
+			<p class="date"><%= p.created_at.strftime("Created: %m/%d/%Y at %l:%M %p : %z UTC") %></p>
+			<p><%= h(p.body).gsub(/\n/, '<br/>') %></p>
+		</div>
+		<a href="/<%= p.id %>">Edit Post</a>
+		<a href="/<%= p.id %>/delete">Delete Post</a>
+	<% end %>
+</div>

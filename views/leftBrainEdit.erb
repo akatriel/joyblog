@@ -1,0 +1,22 @@
+<div class="container">
+	<h1>Update Post</h1>
+	<%= flash[:alert] if flash[:alert] %>
+	<% if @post %>
+		<form action="/<%= @post.id %>" method="post">
+			<!-- fakes put method -->
+			<input type="hidden" name="_method" value="put">
+			<!-- --- -->
+			<div class="form-group">
+				<label for="title">Post Title:</label>
+				<input class="form-control" type="text" name="title" placeholder="<%= @post.title %>">
+			</div>
+			<div class="form-group">
+				<label for="body">Post Body:</label>
+				<textarea class="form-control" rows="3" name="body" placeholder="<%= @post.body %>"></textarea>
+			</div>
+			<input type="submit" name="submit" class="btn btn-primary">
+		</form>
+	<% else %>
+		<p>Post not found.</p>
+	<% end %>
+</div>
