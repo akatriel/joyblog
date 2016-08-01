@@ -1,6 +1,6 @@
 development:
   adapter: sqlite3
-  database: consulate.sqlite3
+  database: joyblog.sqlite3
 
 production:
   adapter: postgresql

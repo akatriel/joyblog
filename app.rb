@@ -5,10 +5,10 @@ require 'sinatra/flash'
 require 'sinatra/redirect_with_flash'
 require './environments'
 
-class RightBrain < ActiveRecord::Base
+class Rightbrain < ActiveRecord::Base
 end
 
-class LeftBrain < ActiveRecord::Base
+class Leftbrain < ActiveRecord::Base
 end
 
 enable :sessions
@@ -35,53 +35,53 @@ end
 
 get '/admin' do
 	protected!
-	@LeftBrain = LeftBrain.all.reverse
-	@rightBrain = RightBrain.all.reverse
+	@leftbrain = Leftbrain.all.reverse
+	@rightbrain = Rightbrain.all.reverse
 	erb :admin
 end
 
-post '/leftBrain/create' do
-	post = LeftBrain.new(title: params[:title], body: params[:body])
+post '/leftbrain/create' do
+	post = Leftbrain.new(title: params[:title], body: params[:body])
 	if post.save
-		redirect 'leftBrain/feed'
+		redirect 'leftbrain/feed'
 	else
 		flash[:alert] = "There was an issue creating the post."
 		redirect '/admin'
 	end
 end
 
-post '/rightBrain/create' do
-	post = RightBrain.new(title: params[:title], body: params[:body])
+post '/rightbrain/create' do
+	post = Rightbrain.new(title: params[:title], body: params[:body])
 	if post.save
-		redirect 'rightBrain/feed'
+		redirect 'rightbrain/feed'
 	else
 		flash[:alert] = "There was an issue creating the post."
 		redirect '/admin'
 	end
 end
 
-get '/leftBrain/feed' do
-	@leftBrain = LeftBrain.all.reverse
-	erb :leftBrainFeed
+get '/leftbrain/feed' do
+	@leftbrain = Leftbrain.all.reverse
+	erb :leftbrainFeed
 end
 
-get '/rightBrain/feed' do
-	@leftBrain = RightBrain.all.reverse
-	erb :rightBrainFeed
+get '/rightbrain/feed' do
+	@leftbrain = Rightbrain.all.reverse
+	erb :rightbrainFeed
 end
 
-get '/leftBrain/:id' do
-	@LeftBrain = LeftBrain.find params[:id]
-	erb :leftBrainEdit
+get '/leftbrain/:id' do
+	@leftbrain = Leftbrain.find params[:id]
+	erb :leftbrainEdit
 end
 
-get '/rightBrain/:id' do
-	@rightBrain = RightBrain.find params[:id]
-	erb :rightBrainEdit
+get '/rightbrain/:id' do
+	@rightbrain = Rightbrain.find params[:id]
+	erb :rightbrainEdit
 end
 
-put '/leftBrain/:id' do
-  p = LeftBrain.find params[:id]
+put '/leftbrain/:id' do
+  p = Leftbrain.find params[:id]
   p.body = params[:body]
   p.title = params[:title]
   p.updated_at = Time.now
@@ -89,12 +89,12 @@ put '/leftBrain/:id' do
   	redirect '/admin'
   else
   	flash[:alert] = "There was an error updating your post"
-  	redirect 'leftBrain/:id'
+  	redirect 'leftbrain/:id'
   end
 end
 
-put '/rightBrain/:id' do
-  p = RightBrain.find params[:id]
+put '/rightbrain/:id' do
+  p = Rightbrain.find params[:id]
   p.body = params[:body]
   p.title = params[:title]
   p.updated_at = Time.now
@@ -102,28 +102,28 @@ put '/rightBrain/:id' do
   	redirect '/admin'
   else
   	flash[:alert] = "There was an error updating your post"
-  	redirect 'rightBrain/:id'
+  	redirect 'rightbrain/:id'
   end
 end
 
-get '/leftBrain/:id/delete' do
-  @post = LeftBrain.find params[:id]
-  erb :leftBrainDelete
+get '/leftbrain/:id/delete' do
+  @post = Leftbrain.find params[:id]
+  erb :leftbrainDelete
 end
 
-get '/rightBrain/:id/delete' do
-  @post = RightBrain.find params[:id]
-  erb :rightBrainDelete
+get '/rightbrain/:id/delete' do
+  @post = Rightbrain.find params[:id]
+  erb :rightbrainDelete
 end
 
-delete '/leftBrain/:id' do
-  p = LeftBrain.find params[:id]
+delete '/leftbrain/:id' do
+  p = Leftbrain.find params[:id]
   p.destroy
   redirect '/admin'
 end
 
-delete '/rightBrain/:id' do
-  p = RightBrain.find params[:id]
+delete '/rightbrain/:id' do
+  p = Rightbrain.find params[:id]
   p.destroy
   redirect '/admin'
 end
