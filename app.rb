@@ -32,6 +32,9 @@ helpers do
   	end
 end
 
+get '/' do
+	erb :landing
+end
 
 get '/admin' do
 	protected!
@@ -66,7 +69,7 @@ get '/leftbrain/feed' do
 end
 
 get '/rightbrain/feed' do
-	@leftbrain = Rightbrain.all.reverse
+	@rightbrain = Rightbrain.all.reverse
 	erb :rightbrainFeed
 end
 

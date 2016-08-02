@@ -1,10 +1,10 @@
 <div class="container">
 	<% if @post %>
-		<p>Are you sure you want to delete the following post: <em>"<%= @post.body %>"</em>?</p>
-		<form action="/<%= @post.id %>" method="post">
+		<p>Are you sure you want to delete the following post: <br> <em>"<%= @post.body %>"</em>?</p>
+		<form action="/rightbrain/<%= @post.id %>" method="post">
 			<input type="hidden" name="_method" value="delete">
 			<input type="submit" value="Yes, Delete It!">
-			<a href="/<%= @post.id %>">Cancel</a>
+			<a href="/rightbrain/<%= @post.id %>">Cancel</a>
 		</form>
 	<% else %>
 		<p>post not found.</p>

@@ -1,8 +1,19 @@
 <div class="container admin-container">
 	<%= flash[:alert] if flash[:alert] %>
 	<h1>Admin Panel</h1>
-	<h2>LeftBrain Creation:</h2>
+
+	<div class="btn-group" data-toggle="buttons">
+		<label class="btn btn-primary active">
+			<input type="radio" name="options" id="option1" autocomplete="off" checked> LeftBrain
+		</label>
+		<label class="btn btn-primary">
+			<input type="radio" name="options" id="option2" autocomplete="off"> RightBrain
+		</label>
+	</div>
+
+	<h2 id='brain-creation-header'>LeftBrain Creation:</h2>
 	<form action='leftbrain/create' method="POST">
+
 		<div class="form-group">
 			<label for="title">LeftBrain Title:</label>
 			<input class="form-control" type="text" name="title">
@@ -14,33 +25,33 @@
 		<input type="submit" name="submit" class="btn btn-primary">
 	</form>
 </div>
-<div class="container feed-container">
-	<h1>Left Brain</h1>
-	<% if @leftbrain %>
+<div class="container left-feed-container">
+	<h2>Left Brain Feed: </h2>
+	<% unless @leftbrain == [] %>
 		<% @leftbrain.each do |p| %>
 			<div class="container post"> 
 				<h2><%= p.title.upcase %></h2>
 				<p class="date"><%= p.created_at.strftime("Created: %m/%d/%Y at %l:%M %p : %z UTC") %></p>
 				<p><%= h(p.body).gsub(/\n/, '<br/>') %></p>
 			</div>
-			<a href="/<%= p.id %>">Edit Post</a> | 
-			<a href="/<%= p.id %>/delete">Delete Post</a>
+			<a href="/leftbrain/<%= p.id %>">Edit Post</a> | 
+			<a href="/leftbrain/<%= p.id %>/delete">Delete Post</a>
 		<% end %>
 	<% else %>
 		<p>There are no LeftBrain posts yet...</p>
 	<% end %>
 </div>
-<div class="container feed-container">
-	<h1>Right Brain</h1>
-	<% if @rightbrain %>
+<div class="container right-feed-container">
+	<h2>Right Brain Feed: </h2>
+	<% unless @rightbrain == [] %>
 		<% @rightbrain.each do |p| %>
 			<div class="container post"> 
 				<h2><%= p.title.upcase %></h2>
 				<p class="date"><%= p.created_at.strftime("Created: %m/%d/%Y at %l:%M %p : %z UTC") %></p>
 				<p><%= h(p.body).gsub(/\n/, '<br/>') %></p>
 			</div>
-			<a href="/<%= p.id %>">Edit Post</a> | 
-			<a href="/<%= p.id %>/delete">Delete Post</a>
+			<a href="/rightbrain/<%= p.id %>">Edit Post</a> | 
+			<a href="/rightbrain/<%= p.id %>/delete">Delete Post</a>
 		<% end %>
 	<% else %>
 		<p>There are no RightBrain posts yet...</p>

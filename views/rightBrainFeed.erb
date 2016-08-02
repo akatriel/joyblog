@@ -1,14 +1,22 @@
 <div class="container feed-container">
 	<h1>Right Brain</h1>
-	<% if @post %>
-		<% @post.each do |p| %>
-			<div class="container post"> 
-				<h2><%= p.title.upcase %></h2>
-				<p class="date"><%= p.created_at.strftime("Created: %m/%d/%Y at %l:%M %p : %z UTC") %></p>
-				<p><%= h(p.body).gsub(/\n/, '<br/>') %></p>
-			</div>
-		<% end %>
-	<% else %>
-		<p>There are no posts yet...</p>
-	<% end %>
+	<div class="row">
+
+    	<div class="col-sm-8 blog-main">
+			<% unless @rightbrain == [] %>
+				<% @rightbrain.each do |p| %>
+					<div class="container post"> 
+						<h2><%= p.title.upcase %></h2>
+						<p class="date"><%= p.created_at.strftime("Created: %m/%d/%Y at %l:%M %p : %z UTC") %></p>
+						<p><%= h(p.body).gsub(/\n/, '<br/>') %></p>
+					</div>
+				<% end %>
+			<% else %>
+				<p>There are no posts yet...</p>
+			<% end %>
+		</div>
+		<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+			<h4>Archives</h4>
+		</div>
+	</div>
 </div>
