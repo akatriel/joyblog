@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801002254) do
+ActiveRecord::Schema.define(version: 20160803180308) do
 
   create_table "leftbrains", force: :cascade do |t|
     t.string   "title"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20160801002254) do
   create_table "rightbrains", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "uploads", force: :cascade do |t|
+    t.string   "url"
+    t.integer  "leftbrainid"
+    t.integer  "rightbrainid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

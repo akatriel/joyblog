@@ -1,11 +1,16 @@
 <div class="container">
-	<h1>Update Post</h1>
+	<h1>Update LeftBrain Post</h1>
 	<%= flash[:alert] if flash[:alert] %>
 	<% if @leftbrain %>
-		<form action="/<%= @leftbrain.id %>" method="POST">
+		<div class="container post"> 
+			<h2><%= @leftbrain.title.upcase %></h2>
+			<p class="date"><%= @leftbrain.created_at.strftime("Created: %m/%d/%Y at %l:%M %p : %z UTC") %></p>
+			<p><%= h(@leftbrain.body).gsub(/\n/, '<br/>') %></p>
+		</div>
+		<form action="/leftbrain/<%= @leftbrain.id %>" method="POST">
 			<!-- fakes put method -->
 			<input type="hidden" name="_method" value="put">
-			<!-- --- -->
+			<!-- - -->
 			<div class="form-group">
 				<label for="title">Left Brain Title:</label>
 				<input class="form-control" type="text" name="title" placeholder="<%= @leftbrain.title %>">
@@ -16,6 +21,14 @@
 			</div>
 			<input type="submit" name="submit" class="btn btn-primary">
 		</form>
+		<% unless @uploads == [] %>
+			<hr>
+			<h2>Uploads:</h2><br>
+			<% @uploads.each do |u| %>
+				<img class="img img-thumbnail" src=<%= u.url %>> <br>
+				<a href="/upload/<%= u.id %>/delete">Delete The Above?</a><br>
+			<% end %>
+		<% end %>
 	<% else %>
 		<p>Left Brain post not found.</p>
 	<% end %>

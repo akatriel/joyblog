@@ -8,6 +8,9 @@ gem 'sinatra-redirect-with-flash'
 
 gem 'rake', '~> 11.2', '>= 11.2.2'
 gem 'sass'
+gem "sinatra-cross_origin", "~> 0.3.1"
+
+gem 'aws-sdk', '~> 2'
 
 group :development do
  gem 'sqlite3'

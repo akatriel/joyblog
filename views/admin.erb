@@ -12,7 +12,7 @@
 	</div>
 
 	<h2 id='brain-creation-header'>LeftBrain Creation:</h2>
-	<form action='leftbrain/create' method="POST">
+	<form action='leftbrain/create' method="POST" >
 
 		<div class="form-group">
 			<label for="title">LeftBrain Title:</label>
@@ -34,6 +34,7 @@
 				<p class="date"><%= p.created_at.strftime("Created: %m/%d/%Y at %l:%M %p : %z UTC") %></p>
 				<p><%= h(p.body).gsub(/\n/, '<br/>') %></p>
 			</div>
+			<a href="/leftbrain/<%= p.id %>/addphoto">Add Files</a> | 
 			<a href="/leftbrain/<%= p.id %>">Edit Post</a> | 
 			<a href="/leftbrain/<%= p.id %>/delete">Delete Post</a>
 		<% end %>
@@ -50,6 +51,7 @@
 				<p class="date"><%= p.created_at.strftime("Created: %m/%d/%Y at %l:%M %p : %z UTC") %></p>
 				<p><%= h(p.body).gsub(/\n/, '<br/>') %></p>
 			</div>
+			<a href="/rightbrain/<%= p.id %>/addphoto">Add Files</a> | 
 			<a href="/rightbrain/<%= p.id %>">Edit Post</a> | 
 			<a href="/rightbrain/<%= p.id %>/delete">Delete Post</a>
 		<% end %>

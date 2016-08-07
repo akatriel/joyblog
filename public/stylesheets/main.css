@@ -1,4 +1,44 @@
 .left-feed-container, .right-feed-container {
   display: none; }
 
+.jumbotron {
+  background: #9752FB; }
+
+body {
+  text-align: center;
+  background: #AEBF9D; }
+
+#nav {
+  background: #3BD6C6; }
+
+.post {
+  text-align: left;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin-bottom: 40px; }
+  .post h2 {
+    color: #9752FB; }
+  .post p {
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-top: 10px; }
+  .post .date {
+    opacity: .7; }
+
+.progress {
+  max-width: 600px;
+  margin: 0.2em 0 0.2em 0; }
+
+.progress .bar {
+  height: 1.2em;
+  padding-left: 0.2em;
+  color: white;
+  display: none; }
+
+.blog-main > div > div > div > div > img {
+  margin-left: auto;
+  margin-right: auto; }
+
 /*# sourceMappingURL=main.css.map */

@@ -1,5 +1,8 @@
-<div class="container feed-container">
+<div class= "jumbotron">
 	<h1>Right Brain</h1>
+</div>
+<div class="container feed-container">
+	
 	<div class="row">
 
     	<div class="col-sm-8 blog-main">
@@ -9,6 +12,8 @@
 						<h2><%= p.title.upcase %></h2>
 						<p class="date"><%= p.created_at.strftime("Created: %m/%d/%Y at %l:%M %p : %z UTC") %></p>
 						<p><%= h(p.body).gsub(/\n/, '<br/>') %></p>
+						<%= erb :fileCarousel, :layout => false, :locals => { :p => p } %>
+						
 					</div>
 				<% end %>
 			<% else %>
