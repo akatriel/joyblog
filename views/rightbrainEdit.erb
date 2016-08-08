@@ -1,0 +1,35 @@
+<div class="container">
+	<h1>Update RightBrain Post</h1>
+	<%= flash[:alert] if flash[:alert] %>
+	<% if @rightbrain %>
+		<div class="container post"> 
+			<h2><%= @rightbrain.title.upcase %></h2>
+			<p class="date"><%= @rightbrain.created_at.strftime("Created: %m/%d/%Y at %l:%M %p : %z UTC") %></p>
+			<p><%= h(@rightbrain.body).gsub(/\n/, '<br/>') %></p>
+		</div>
+		<form action="/rightbrain/<%= @rightbrain.id %>" method="POST">
+			<!-- fakes put method -->
+			<input type="hidden" name="_method" value="put">
+			<!-- - -->
+			<div class="form-group">
+				<label for="title">Right Brain Title:</label>
+				<input class="form-control" type="text" name="title" placeholder="<%= @rightbrain.title %>">
+			</div>
+			<div class="form-group">
+				<label for="body">Right Brain Body:</label>
+				<textarea class="form-control" rows="3" name="body" placeholder="<%= @rightbrain.body %>"></textarea>
+			</div>
+			<input type="submit" name="submit" class="btn btn-primary">
+		</form>
+		<% unless @uploads == [] %>
+			<hr>
+			<h2>Uploads:</h2><br>
+			<% @uploads.each do |u| %>
+				<img class="img img-thumbnail" src=<%= u.url %>> <br>
+				<a href="/upload/<%= u.id %>/delete">Delete The Above?</a><br>
+			<% end %>
+		<% end %>
+	<% else %>
+		<p>Right Brain post not found.</p>
+	<% end %>
+</div>

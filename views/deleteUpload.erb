@@ -1,0 +1,12 @@
+<div class="container">
+	<% if @upload %>
+		<p>Are you sure you want to delete the following File: <em>"<%= @upload.url %>"</em>?</p>
+		<form action="/upload/<%= @upload.id %>/delete" method="post">
+		<input type="hidden" name="_method" value="delete">
+		<input class="btn btn-danger" type="submit" value="Yes, Delete It!">
+		<a href="<%= back %>">Cancel</a>
+		</form>
+	<% else %>
+		<p>Upload not found.</p>
+	<% end %>
+</div>

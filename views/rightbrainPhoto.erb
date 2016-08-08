@@ -1,0 +1,27 @@
+<div class="container">
+	<h1>Add File to RightBrain Post</h1>
+	<%= flash[:alert] if flash[:alert] %>
+	<% if @rightbrain %>
+		<div class="container post"> 
+			<h2><%= @rightbrain.title.upcase %></h2>
+			<p class="date"><%= @rightbrain.created_at.strftime("Created: %m/%d/%Y at %l:%M %p : %z UTC") %></p>
+			<p><%= h(@rightbrain.body).gsub(/\n/, '<br/>') %></p>
+		</div>
+		<br>
+		<form class="directUpload" action="/rightbrain/<%= @rightbrain.id %>/addphoto" method="post" enctype="multipart/form-data" >
+			<!-- s3 data-attributes -->
+			<input type="hidden" name="form-data" value=<%= @s3_direct_post.fields.to_json %>>
+			<input type="hidden" name="fileurl" value='<%= @s3_direct_post.url %>'>
+			<input type="hidden" name="host" value='<%= URI.parse(@s3_direct_post.url).host %>'>
+			<!-- end s3 -->
+			
+			<div class="form-group">
+				<label for="file">File to Upload:</label>
+				<input class="form-control" type="file" name="file" />
+			</div>
+			<input type="submit" name="submit" class="btn btn-primary">
+		</form>
+	<% else %>
+		<p>Right Brain post not found.</p>
+	<% end %>
+</div>
