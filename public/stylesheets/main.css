@@ -2,14 +2,18 @@
   display: none; }
 
 .jumbotron {
-  background: #9752FB; }
+  background: #333333;
+  color: #E9A3F8; }
 
 body {
   text-align: center;
   background: #AEBF9D; }
 
 #nav {
-  background: #3BD6C6; }
+  background: #333333;
+  border: #333333; }
+  #nav .navbar-brand, #nav a {
+    color: #90D9D2; }
 
 .post {
   text-align: left;
@@ -17,7 +21,7 @@ body {
   border-radius: 10px;
   margin-bottom: 40px; }
   .post h2 {
-    color: #9752FB; }
+    color: #90D9D2; }
   .post p {
     justify-content: center;
     padding-left: 20px;
@@ -25,7 +29,8 @@ body {
     padding-bottom: 20px;
     padding-top: 10px; }
   .post .date {
-    opacity: .7; }
+    opacity: .7;
+    color: #E9A3F8; }
 
 .progress {
   max-width: 600px;

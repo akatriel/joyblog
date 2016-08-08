@@ -4,7 +4,7 @@
 <div class="container feed-container">
 	<div class="row">
 
-    	<div class="col-sm-8 blog-main">
+    	<div class=".col-xs-12 .col-sm-6 .col-md-8 blog-main">
 			<% unless @leftbrain == [] %>
 				<% @leftbrain.each do |p| %>
 					<div class="container post"> 
@@ -17,9 +17,6 @@
 			<% else %>
 				<p>There are no Posts yet...</p>
 			<% end %>
-		</div>
-		<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-			<h4>Archives</h4>
 		</div>
 	</div>
 </div>
