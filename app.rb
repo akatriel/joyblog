@@ -16,16 +16,6 @@ class Leftbrain < ActiveRecord::Base
 	has_many :uploads
 end
 
-options "*" do
-  # response.headers["Allow"] = "HEAD,GET,PUT,DELETE,OPTIONS"
-
-  # # Needed for AngularJS
-  # response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
-  response.headers["Access-Control-Allow-Origin"] = "https://joyblog.herokuapp.com"
-  200
-end
-
-
 Aws.config.update({
   region: 'us-east-1',
   credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY'], ENV['AWS_SECRET_KEY'])
