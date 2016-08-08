@@ -15,15 +15,16 @@ end
 class Leftbrain < ActiveRecord::Base
 	has_many :uploads
 end
-# CORS preflight issue fix: https://github.com/britg/sinatra-cross_origin
 
 options "*" do
-  response.headers["Allow"] = "HEAD,GET,PUT,POST,DELETE,OPTIONS"
+  # response.headers["Allow"] = "HEAD,GET,PUT,DELETE,OPTIONS"
 
-  response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
-
+  # # Needed for AngularJS
+  # response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
+  response.headers["Access-Control-Allow-Origin"] = "https://joyblog.herokuapp.com"
   200
 end
+
 
 Aws.config.update({
   region: 'us-east-1',
