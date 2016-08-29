@@ -212,12 +212,12 @@ end
 
 delete '/upload/:id/delete' do
 	u = Upload.find params[:id]
-	redurl = ""
+	redirect_url = ""
 	unless u.leftbrainid.nil?
-		redurl = '/leftbrain/' << u.leftbrainid.to_s
+		redirect_url = '/leftbrain/' << u.leftbrainid.to_s
 	else
-		redurl = '/rightbrain/' << u.rightbrainid.to_s
+		redirect_url = '/rightbrain/' << u.rightbrainid.to_s
 	end
 	u.destroy
-	redirect redurl
+	redirect redirect_url
 end
