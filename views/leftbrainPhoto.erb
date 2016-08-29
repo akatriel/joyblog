@@ -8,6 +8,10 @@
 			<p><%= h(@leftbrain.body).gsub(/\n/, '<br/>') %></p>
 		</div>
 		<br>
+		<hr>
+		<%= erb :fileCarouselUploadPage, :layout => false %>
+		<br>
+		<hr>
 		<form class="directUpload" action="/leftbrain/<%= @leftbrain.id %>/addphoto" method="post" enctype="multipart/form-data" >
 			<!-- s3 data-attributes -->
 			<input type="hidden" name="form-data" value=<%= @s3_direct_post.fields.to_json %>>

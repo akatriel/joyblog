@@ -170,12 +170,14 @@ end
 get '/leftbrain/:id/addphoto' do
 	cross_origin
 	@leftbrain = Leftbrain.find params[:id]
+	@uploads = Upload.where(leftbrainid: @leftbrain.id)
 	erb :leftbrainPhoto
 end
 
 get '/rightbrain/:id/addphoto' do
 	cross_origin
 	@rightbrain = Rightbrain.find params[:id]
+	@uploads = Upload.where(rightbrainid: @rightbrain.id)
 	erb :rightbrainPhoto
 end
 

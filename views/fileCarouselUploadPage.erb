@@ -1,15 +1,15 @@
-<% unless p.nil? || @uploads[p.id] == [] %>
+<% unless @uploads == [] %>
 <div id="carousel" class="carousel slide" data-ride="carousel">
 	  <!-- Indicators -->
 	  <ol class="carousel-indicators">
-	  		<% @uploads[p.id].each_with_index do |string, index| %>
-		   		<li <%= index == 0 ? "class= 'active' " : "class=''" %> data-target="#carousel" data-slide-to=<%= index %> ></li>
+	  		<% @uploads.each_with_index do |string, index| %>
+		   		<li <%= index == 0 ? "class='active' " : "class=''" %>data-target="#carousel" data-slide-to=<%= index %> ></li>
 		    <% end %>
 	  </ol>
 
 	  <!-- Wrapper for slides -->
 	  <div class="carousel-inner" role="listbox">
-	  		<% @uploads[p.id].each_with_index do |string, index| %>
+	  		<% @uploads.each_with_index do |string, index| %>
 				<div <%= index == 0 ? "class= 'item active' " : "class='item'" %> >
 					<img src=<%= string.url %> >
 				</div>
