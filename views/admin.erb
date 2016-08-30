@@ -1,5 +1,4 @@
 <div class="container admin-container">
-	<%= flash[:alert] if flash[:alert] %>
 	<h1>Admin Panel</h1>
 
 	<div class="btn-group" data-toggle="buttons">
@@ -33,10 +32,12 @@
 				<h2><%= p.title.upcase %></h2>
 				<p class="date"><%= p.created_at.strftime("Created: %m/%d/%Y at %l:%M %p : %z UTC") %></p>
 				<p><%= h(p.body).gsub(/\n/, '<br/>') %></p>
+				<br>
+				<a href="/leftbrain/<%= p.id %>/addphoto">Add Files</a> | 
+				<a href="/leftbrain/<%= p.id %>">Edit Post</a> | 
+				<a href="/leftbrain/<%= p.id %>/delete">Delete Post</a>
 			</div>
-			<a href="/leftbrain/<%= p.id %>/addphoto">Add Files</a> | 
-			<a href="/leftbrain/<%= p.id %>">Edit Post</a> | 
-			<a href="/leftbrain/<%= p.id %>/delete">Delete Post</a>
+			
 		<% end %>
 	<% else %>
 		<p>There are no LeftBrain posts yet...</p>
@@ -50,10 +51,10 @@
 				<h2><%= p.title.upcase %></h2>
 				<p class="date"><%= p.created_at.strftime("Created: %m/%d/%Y at %l:%M %p : %z UTC") %></p>
 				<p><%= h(p.body).gsub(/\n/, '<br/>') %></p>
+				<a href="/rightbrain/<%= p.id %>/addphoto">Add Files</a> | 
+				<a href="/rightbrain/<%= p.id %>">Edit Post</a> | 
+				<a href="/rightbrain/<%= p.id %>/delete">Delete Post</a>
 			</div>
-			<a href="/rightbrain/<%= p.id %>/addphoto">Add Files</a> | 
-			<a href="/rightbrain/<%= p.id %>">Edit Post</a> | 
-			<a href="/rightbrain/<%= p.id %>/delete">Delete Post</a>
 		<% end %>
 	<% else %>
 		<p>There are no RightBrain posts yet...</p>

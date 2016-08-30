@@ -10,10 +10,14 @@ require 'pp'
 
 class Rightbrain < ActiveRecord::Base
 	has_many :uploads
+	validates :title, :body, presence: true
 end
 
 class Leftbrain < ActiveRecord::Base
+
 	has_many :uploads
+	validates :title, :body, presence: true
+
 end
 
 Aws.config.update({
@@ -27,6 +31,8 @@ S3_BUCKET = s3.bucket(ENV['AWS_BUCKET'])
 class Upload < ActiveRecord::Base
 	belongs_to :leftbrain
 	belongs_to :rightbrain
+
+	validates :url, presence: true
 end
 
 before /leftbrain|rightbrain/ do
@@ -184,6 +190,8 @@ end
 post '/leftbrain/:id/addphoto' do
 	leftbrain = Leftbrain.find params[:id]
 	f = Upload.new
+	pp '<<<<<<<<<<<<>>>>>>>>>>>>>>>>'
+	pp params[:file]
 	f.url = params[:file]
 	f.leftbrainid = leftbrain.id
 	if f.save

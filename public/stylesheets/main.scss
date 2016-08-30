@@ -1,3 +1,5 @@
+// @import url(https://fonts.googleapis.com/css?family=Arimo);
+@import url(https://fonts.googleapis.com/css?family=Raleway);
 .left-feed-container, .right-feed-container {
 	display: none;
 }
@@ -9,6 +11,7 @@
 body{
 	text-align: center;
 	background: #AEBF9D;
+	font-family: 'Raleway', sans-serif;
 }
 #nav{
 	background: #333333;
@@ -40,7 +43,7 @@ body{
 	}
 }
 .progress {
-  max-width: 600px;
+  max-width: 100%;
   margin:    0.2em 0 0.2em 0;
 }
 
@@ -55,7 +58,25 @@ body{
 	margin-left: auto;
 	margin-right: auto;
 }
-
+#carousel > .carousel-inner > div.item > .file {
+	height:auto;
+	min-height: 20vh;
+	width: 100%;
+	text-align:center;
+	.f {
+		width:100%;
+	}
+	span {
+		font-size: 400%;	
+	}
+}
+.item > a {
+	text-align:center;
+	width:100%;
+	margin-left: auto;
+	margin-right: auto;
+	position:absolute;
+}
 // #BE8EFE;
 
 // #AEBF9D;

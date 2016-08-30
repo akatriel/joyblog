@@ -1,6 +1,6 @@
 <div class="container">
 	<h1>Add File to LeftBrain Post</h1>
-	<%= flash[:alert] if flash[:alert] %>
+	
 	<% if @leftbrain %>
 		<div class="container post"> 
 			<h2><%= @leftbrain.title.upcase %></h2>
@@ -26,6 +26,6 @@
 			<input type="submit" name="submit" class="btn btn-primary">
 		</form>
 	<% else %>
-		<p>LeftBrain post not found.</p>
+		<p>Left Brain post not found.</p>
 	<% end %>
 </div>
