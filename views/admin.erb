@@ -30,7 +30,7 @@
 		<% @leftbrain.each do |p| %>
 			<div class="container post"> 
 				<h2><%= p.title.upcase %></h2>
-				<p class="date"><%= p.created_at.strftime("Created: %m/%d/%Y at %l:%M %p : %z UTC") %></p>
+				<p class="date"><%= p.created_at.strftime("Created: %m/%d/%Y") %></p>
 				<p><%= h(p.body).gsub(/\n/, '<br/>') %></p>
 				<br>
 				<a href="/leftbrain/<%= p.id %>/addphoto">Add Files</a> | 
@@ -48,8 +48,8 @@
 	<% unless @rightbrain == [] %>
 		<% @rightbrain.each do |p| %>
 			<div class="container post"> 
-				<h2><%= p.title.upcase %></h2>
-				<p class="date"><%= p.created_at.strftime("Created: %m/%d/%Y at %l:%M %p : %z UTC") %></p>
+				<h2><span class="rb"><%= p.title.upcase %></span></h2>
+				<p class="date"><%= p.created_at.strftime("Created: %m/%d/%Y") %></p>
 				<p><%= h(p.body).gsub(/\n/, '<br/>') %></p>
 				<a href="/rightbrain/<%= p.id %>/addphoto">Add Files</a> | 
 				<a href="/rightbrain/<%= p.id %>">Edit Post</a> | 

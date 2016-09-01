@@ -1,5 +1,5 @@
 <div class= "jumbotron">
-	<h1>Right Brain</h1>
+	<h1><span class="rb">Right Brain<span></h1>
 </div>
 <div class="container feed-container">
 	
@@ -9,8 +9,8 @@
 			<% unless @rightbrain == [] %>
 				<% @rightbrain.each do |p| %>
 					<div class="container post"> 
-						<h2><%= p.title.upcase %></h2>
-						<p class="date"><%= p.created_at.strftime("Created: %m/%d/%Y at %l:%M %p : %z UTC") %></p>
+						<h2><span class="rb"><%= p.title.upcase %></span></h2>
+						<p class="date"><%= p.created_at.strftime("Created: %m/%d/%Y") %></p>
 						<p><%= h(p.body).gsub(/\n/, '<br/>') %></p>
 						<%= erb :fileCarousel, :layout => false, :locals => { :p => p } %>
 						
