@@ -26,14 +26,15 @@ $('.admin-container').ready(function(){
 	});
 });
 
-
+// File upload handling:
 $(function() {
   $('.directUpload').find("input:file").each(function(i, elem) {
     var fileInput    = $(elem);
     var form         = $(fileInput.parents('form:first'));
     var submitButton = form.find('input[type="submit"]');
-    var progressBar  = $("<div class='bar'></div>");
+    var progressBar  = $("<div class='progress-bar'></div>");
     var barContainer = $("<div class='progress'></div>").append(progressBar);
+    barContainer.hide();
     fileInput.after(barContainer);
     // ^^ iterates through all files and creates a progress bar for each.
 
@@ -66,9 +67,9 @@ $(function() {
 
       start: function (e) {
         submitButton.prop('disabled', true);
-
+        barContainer.show();
         progressBar.
-          css('background', 'green').
+          toggleClass('progress-bar-info').
           css('display', 'block').
           css('width', '0%').
           text("Loading...");
@@ -77,6 +78,7 @@ $(function() {
       done: function(e, data) {
         submitButton.prop('disabled', false);
         progressBar.text("Uploading done");
+        progressBar.toggleClass('progress-bar-info').toggleClass('progress-bar-success');
 
         // extract key and generate URL from response
         var key   = $(data.jqXHR.responseXML).find("Key").text();
@@ -90,10 +92,43 @@ $(function() {
       fail: function(e, data) {
         submitButton.prop('disabled', false);
 
-        progressBar.
-          css("background", "red").
+        progressBar.toggleClass('progress-bar-info').
+          toggleClass('progress-bar-danger').
           text("Failed");
       }
     });
   });
 });
+
+
+
+
+
+
+
+$().ready(function(){
+  $('img').each(function() {
+    var src = this.src;
+    if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+      // image was broken, replace with your new image
+      $(this).before("<br>").before(
+        "<a href='" + src + "'<h2 class='f'>" + src + "</h2></a><br><div class='file'><span class='glyphicon glyphicon-file'></span></div>"
+      );
+      var name = $('.f').text().split('/').pop();
+      $('.f').text(name);
+      $(this).remove();
+    }
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+

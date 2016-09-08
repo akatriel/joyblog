@@ -10,10 +10,14 @@ require 'pp'
 
 class Rightbrain < ActiveRecord::Base
 	has_many :uploads
+	validates :title, :body, presence: true
 end
 
 class Leftbrain < ActiveRecord::Base
+
 	has_many :uploads
+	validates :title, :body, presence: true
+
 end
 
 Aws.config.update({
@@ -27,6 +31,8 @@ S3_BUCKET = s3.bucket(ENV['AWS_BUCKET'])
 class Upload < ActiveRecord::Base
 	belongs_to :leftbrain
 	belongs_to :rightbrain
+
+	validates :url, presence: true
 end
 
 before /leftbrain|rightbrain/ do
@@ -170,18 +176,22 @@ end
 get '/leftbrain/:id/addphoto' do
 	cross_origin
 	@leftbrain = Leftbrain.find params[:id]
+	@uploads = Upload.where(leftbrainid: @leftbrain.id)
 	erb :leftbrainPhoto
 end
 
 get '/rightbrain/:id/addphoto' do
 	cross_origin
 	@rightbrain = Rightbrain.find params[:id]
+	@uploads = Upload.where(rightbrainid: @rightbrain.id)
 	erb :rightbrainPhoto
 end
 
 post '/leftbrain/:id/addphoto' do
 	leftbrain = Leftbrain.find params[:id]
 	f = Upload.new
+	pp '<<<<<<<<<<<<>>>>>>>>>>>>>>>>'
+	pp params[:file]
 	f.url = params[:file]
 	f.leftbrainid = leftbrain.id
 	if f.save
@@ -212,12 +222,12 @@ end
 
 delete '/upload/:id/delete' do
 	u = Upload.find params[:id]
-	redurl = ""
+	redirect_url = ""
 	unless u.leftbrainid.nil?
-		redurl = '/leftbrain/' << u.leftbrainid.to_s
+		redirect_url = '/leftbrain/' << u.leftbrainid.to_s
 	else
-		redurl = '/rightbrain/' << u.rightbrainid.to_s
+		redirect_url = '/rightbrain/' << u.rightbrainid.to_s
 	end
 	u.destroy
-	redirect redurl
+	redirect redirect_url
 end

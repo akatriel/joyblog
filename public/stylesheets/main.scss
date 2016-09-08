@@ -1,20 +1,35 @@
+// @import url(https://fonts.googleapis.com/css?family=Arimo);
+@import url(https://fonts.googleapis.com/css?family=Raleway);
 .left-feed-container, .right-feed-container {
 	display: none;
+}
+.landing {
+	height: 100vh;
+	width: auto;
+	background-image: url('../waterfall.jpeg');
+	background-size: cover;
+	margin-top: -20px;
 }
 .jumbotron {
 	background: #333333;
 	// color: #90D9D2;
-	color: #E9A3F8;
+	color: #fff;
+}
+.landing-jumbotron {
+	position:absolute;
+	top: 20%;
+	width: 100%;
 }
 body{
 	text-align: center;
 	background: #AEBF9D;
+	font-family: 'Raleway', sans-serif;
 }
 #nav{
 	background: #333333;
 	border-color: #333333;
 	.navbar-brand, a{
-		color: #90D9D2;
+		color: #fff;
 	}
 }
 .post {
@@ -35,12 +50,11 @@ body{
 		padding-top: 10px;
 	}
 	.date {
-		opacity: .7;
-		color: #E9A3F8;
+		opacity: .6;
 	}
 }
 .progress {
-  max-width: 600px;
+  max-width: 100%;
   margin:    0.2em 0 0.2em 0;
 }
 
@@ -55,7 +69,32 @@ body{
 	margin-left: auto;
 	margin-right: auto;
 }
-
+#carousel > .carousel-inner > div.item > .file {
+	height:auto;
+	min-height: 20vh;
+	width: 100%;
+	text-align:center;
+	.f {
+		width:100%;
+	}
+	span {
+		font-size: 400%;	
+	}
+}
+.item > a {
+	text-align:center;
+	width:100%;
+	margin-left: auto;
+	margin-right: auto;
+	position:absolute;
+	left: 0;
+}
+.rb {
+	color:#E9A3F8;
+}
+.lb {
+	color:#90D9D2;
+}
 // #BE8EFE;
 
 // #AEBF9D;

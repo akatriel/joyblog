@@ -31,7 +31,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/">RightBrain - LeftBrain</a>
+				<a class="navbar-brand" href="/"><span class="rb">RightBrain</span> - <span class="lb">LeftBrain</span></a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,15 +43,26 @@
 					<button type="submit" class="btn btn-default">Submit</button>
 				</form> -->
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/leftbrain/feed">LeftBrain Feed</a></li>
-					<li><a href="/rightbrain/feed">RightBrain Feed</a></li>
+					<li><a href="/leftbrain/feed"><span class="lb">LeftBrain Feed</a></span></li>
+					<li><a href="/rightbrain/feed"><span class="rb">RightBrain Feed</a></span></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
-
+	<p class="text-danger"><%= flash[:alert] if flash[:alert] %></p>
 	<%= yield %>
 	<hr>
 	<p class="copyright">&copy; 2016 Michael Craig Gabay LLC</p>
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-77017555-4', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
 </body>
 </html>
